@@ -1,0 +1,35 @@
+﻿@using ETicaretWebMvc.Models
+@model IEnumerable<ProductView>
+@{
+    ViewBag.Title = "List";
+}
+<div class="container mt-5">
+    <div class="row">
+        <!-- Left Menu -->
+        <div class="col-md-3">
+            @Html.Action("GetCategories","Home")
+        </div>
+        <!-- Left Menu End -->
+        <!-- Right Side Product List -->
+        <div class="col-md-9">
+
+            @if (Model.Count() == 0)
+            {
+                <div class="alert alert-warning" role="alert">
+                    <i class="fa fa-exclamation-circle"></i>
+                    Seçtiğiniz kategoride bir ürün bulunamadı!
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-warning" role="alert">
+                    <i class="fa fa-check-square"></i>
+                    <strong>@Model.Count() adet</strong> ürün bulundu.
+                </div>
+            }
+
+            @Html.Partial("_ProductList", Model)
+        </div>
+        <!-- Right Side Product List End-->
+    </div>
+</div>

@@ -1,0 +1,97 @@
+﻿@model ETicaretWebMvc.Models.ShippingDetails
+@{
+    ViewBag.Title = "Checkout";
+}
+
+<style>
+    .field-validation-error{color:#f00;}
+    .field-validation-valid{display:none;}
+    .input-validation-error{border:1pX solid #f00;background-color:#fee;}
+    .validation-summary-error{font-weight:bold;color:#f00;}
+    .validation-summary-valid{display:none;}
+</style>
+
+<div class="container col-md-8 col-md-offset-4">
+    <div class="row">
+        <div class="col">
+            <div class="text-center">
+                <h2>Sipariş Bilgileriniz</h2>
+                <p>Lütfen sipariş bilgilerinizi doldurunuz.</p>
+            </div>
+            <hr />
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+                <div class="form-group row">
+                    <label for="UserName" class="col-sm-2 col-form-label">Ad Soyad</label>
+                    <div class="col-sm-10">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <span class="badge-success">
+                                @User.Identity.Name
+                            </span>
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+                        }
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="AdresBasligi" class="col-sm-2 col-form-label">Adres Tanımı</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(x => x.AdresBasligi, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="Adres" class="col-sm-2 col-form-label">Adres</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(x => x.Adres, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="Sehir" class="col-sm-2 col-form-label">Şehir</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(x => x.Sehir, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="Semt" class="col-sm-2 col-form-label">Semt</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(x => x.Semt, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="Mahalle" class="col-sm-2 col-form-label">Mahalle</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(x => x.Mahalle, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="PostaKodu" class="col-sm-2 col-form-label">Posta Kodu</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(x => x.PostaKodu, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label"></label>
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary">Devam</button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
